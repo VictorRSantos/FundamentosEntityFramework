@@ -5708,11 +5708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo1\\Blog\\Blog.csproj",
+      "projectUniqueName": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo 02\\Blog\\Blog.csproj",
       "projectName": "Blog",
-      "projectPath": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo1\\Blog\\Blog.csproj",
+      "projectPath": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo 02\\Blog\\Blog.csproj",
       "packagesPath": "C:\\Users\\Victor\\.nuget\\packages\\",
-      "outputPath": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo1\\Blog\\obj\\",
+      "outputPath": "S:\\Balta.io\\FundamentosEntityFramework\\Modulo 02\\Blog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

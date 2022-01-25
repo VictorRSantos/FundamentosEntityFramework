@@ -10,51 +10,66 @@ namespace Blog
     {
         static void Main(string[] args)
         {
-            using (var context = new BlogDataContext())
-            {
-                /* CREATE */
-                // var tag = new Tag { Name = "ASP.NET", Slug = "aspnet" };                
-                // context.Tags.Add(tag);
-                // context.SaveChanges();
+            using var context = new BlogDataContext();
 
-                /* UPDATE */
-                // var tag = context.Tags.FirstOrDefault(x => x.Id == 3);
-                // tag.Name = ".NET";
-                // tag.Slug = "dotnet";
-                // context.Update(tag);
-                // context.SaveChanges();
+            // var user = new User
+            // {
+            //     Name = "André Baltieri",
+            //     Slug = "andrebaltieri",
+            //     Email = "andrebaltieri@balta.io",
+            //     Bio = "9x Microsoft MVP",
+            //     Image = "https://balta.io",
+            //     PasswordHash = "123098457"
 
-                /* DELETE */
-                // var tag = context.Tags.FirstOrDefault(x => x.Id == 3);
-                // context.Remove(tag);
-                // context.SaveChanges();
+            // };
 
+            // var category = new Category { Name = "Backend", Slug = "backend" };
 
-                /* ToList */
-                // var tags = context.Tags.ToList();
-
-                // foreach (var tag in tags)
-                // {
-                //     System.Console.WriteLine(tag.Name);
-                // }
-
-                /* AsNoTracking - na carrega Metadados e com isso aumenta a performance do EntityFramework*/
-                // var tags = context.Tags.AsNoTracking().ToList();
-
-                // foreach (var tag in tags)
-                // {
-                //     System.Console.WriteLine(tag.Name);
-                // }
-
-                /* First, Single */
-
-                //var tag = context.Tags.AsNoTracking().FirstOrDefault(x => x.Id == 29);
-                // var tag = context.Tags.AsNoTracking().First(x => x.Id == 3);
-
-                // System.Console.WriteLine(tag?.Name);
+            // var post = new Post
+            // {
+            //     Author = user,
+            //     Category = category,
+            //     Body = "<p>Hello world</p>",
+            //     Slug = "comecando-com-ef-core",
+            //     Summary = "Neste artigo vamos aprender EF core",
+            //     Title = "Começando com EF Core",
+            //     CreateDate = DateTime.Now,
+            //     LastUpdateDate = DateTime.Now,
+            // };
 
 
-            }
+            // context.Posts.Add(post);
+            // context.SaveChanges();
+
+
+            // var posts = context
+            // .Posts
+            // .AsNoTracking()
+            // .Include(x => x.Author)
+            // .Include(x => x.Category)
+            // .OrderByDescending(x => x.LastUpdateDate).ToList();
+
+            // foreach (var post in posts)
+            // {
+            //     System.Console.WriteLine($"{ post.Title} escrito por {post.Author?.Name} em {post.Category?.Name}");
+            // }
+
+
+            var post = context
+              .Posts
+              // .AsNoTracking() PRECISA DO TRACKING 
+              .Include(x => x.Author)
+              .Include(x => x.Category)
+              .OrderBy(x => x.LastUpdateDate)
+              .FirstOrDefault(); // Pegando o primeiro item
+
+            post.Author.Name = "Uncle Bob";
+
+            context.Posts.Update(post);
+            context.SaveChanges();
+
+
+
         }
     }
 }
